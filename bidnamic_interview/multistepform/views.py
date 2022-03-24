@@ -88,6 +88,7 @@ class MultiStepFormView(TemplateView):
         # override context data and pass form to the template
         context = self.get_context_data()
         context['form'] = form
+
         return self.render_to_response(context=context)
 
     def post(self, request, step):
@@ -132,7 +133,7 @@ class MultiStepFormView(TemplateView):
                 cleaned_bio_data['phone_number'] = phone_numbers
 
                 # set the form data to the session
-                set_form_data(request, step, cleaned_data)
+                set_form_data(request, step, cleaned_bio_data)
 
                 # redirect to the next form step and increment the step counter
                 return redirect(reverse('multistepform:step-parameter', kwargs={'step': step+1}))
