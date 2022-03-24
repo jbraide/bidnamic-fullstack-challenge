@@ -39,8 +39,10 @@ class BiddingInformationForm(forms.ModelForm):
 
         # loop through the option
         for bidding_option in bidding_settings:
+            # if the bidding setting option is not one of the options raise the following error....
             if bidding_setting_option != bidding_option[0]:
                 raise forms.ValidationError('This option is an Invalid Bidding Setting')
+            # 
             else:
                 return bidding_setting_option
 
