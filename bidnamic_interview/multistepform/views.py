@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+# import forms
+from .forms import BioDataForm, BiddingInformationForm
+
+# import generic TemplateView
+from django.views.generic import TemplateView
 
 '''
     *Disclaimer*
@@ -8,4 +13,9 @@ from django.shortcuts import render
 
 '''
 
-# class 
+class MultiStepFormView(TemplateView):
+    template_name = 'multistepform/bio-data-form.html'
+
+    # def get(self, request, step):
+    #     if step == None:
+    #         return redirect()
