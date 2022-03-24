@@ -89,7 +89,9 @@ class MultiStepFormView(TemplateView):
 
         return self.render_to_response(context=context)
 
-    def post(self, request, step):
+    def post(self, request, step, **kwargs):
+        context = self.get_context_data(**kwargs)
+
         # get the current step and let it accept a POST request
         form = FORM_STEPS[step]['form'](request.POST)
 
@@ -115,7 +117,8 @@ class MultiStepFormView(TemplateView):
                 return redirect(reverse('multistepform:feedback', kwargs={'heading': 'Submitted', 'message': 'The session has been successfully cleared'}))
 
             else:
-                print(form.errors)
+                context['form'] = form
+                return self.render_to_response(context=context)
 
         # for every other that is not the last 
         else:
@@ -145,7 +148,8 @@ class MultiStepFormView(TemplateView):
 
             # if the bio-data form is invalid
             else:
-                print(form.errors)
+                context['form'] = form
+                return self.render_to_response(context=context)
         
 
 # when the clear button is hit flush the session
