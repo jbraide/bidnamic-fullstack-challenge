@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from .forms import BiddingInformationForm, BioDataForm
+from multistepform.forms import BiddingInformationForm, BioDataForm
 
 class TestBiddingInformationForm(TestCase):
     def test_invalid_bidding_option_in_form(self):
@@ -18,3 +18,7 @@ class TestBiddingInformationForm(TestCase):
         }
         bidding_form = BiddingInformationForm(valid_bidding_data).is_valid()
         return self.assertTrue(bidding_form)
+
+class TestBioDataForm(TestCase):
+    def test_dob_under_18(self):
+        return self.assertFalse()
