@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('multi-step-form/', include('multistepform.urls', namespace='multistepform')),
+    path('', include('multistepform.urls', namespace='multistepform')),
 ]
