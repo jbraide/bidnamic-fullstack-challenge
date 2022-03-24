@@ -8,7 +8,7 @@ from .models import BioDataAndBiddingInformation
 from django.forms.widgets import NumberInput
 
 # import date
-from datetime import date, timedelta
+from datetime import date
 
 class BioDataForm(forms.ModelForm):
     date_of_birth = forms.DateField(widget=NumberInput(attrs={'type': 'date'}))
@@ -24,6 +24,7 @@ class BioDataForm(forms.ModelForm):
         if age <= 18:
             raise forms.ValidationError('You Must be Up to 18 years')
         return date_of_birth
+
 class BiddingInformationForm(forms.ModelForm):
     class Meta:
         model = BioDataAndBiddingInformation

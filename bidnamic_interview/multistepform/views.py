@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from .forms import BioDataForm, BiddingInformationForm
 
 # import generic TemplateView
-from django.views.generic import TemplateView, RedirectView
+from django.views.generic import TemplateView
 
 #  import reverse
 from django.urls import reverse, reverse_lazy
@@ -43,12 +43,6 @@ def get_session_data(request, step):
         get session data by concatenate Prefix and add to the step as * suffix *
     '''
     return request.session.get(SESSION_KEY_PREFIX + str(step))
-
-# def get_form_data(request, step):
-#     '''
-#         get the form data from the session
-#     '''
-#     return FORM_STEPS[step]['form'](get_session_data(request, step))
 
 def set_form_data(request, step, data):
     '''
