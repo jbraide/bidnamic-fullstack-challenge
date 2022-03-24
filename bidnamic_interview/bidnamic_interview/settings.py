@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'multistepform',
 
     # third party packages
+    'phonenumber_field',
 
 ]
 
