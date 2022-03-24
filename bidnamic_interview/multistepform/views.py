@@ -155,13 +155,13 @@ class MultiStepFormView(TemplateView):
         
 
 # when the clear button is hit flush the session
-class ClearFormView(RedirectView):
-    url = reverse_lazy('multistepform:feedback', kwargs={'heading': 'Cleared', 'message': 'The session has been successfully cleared, '})
+class ClearFormView(TemplateView):
+    template_name = 'multistepform/feedback.html'
 
-    def get_redirect_url(self, *args, **kwargs):
+    def get(self, *args, **kwargs):
         # clear the session
         self.request.session.flush()
-        return super().get_redirect_url(*args, **kwargs)
+        return redirect(reverse_lazy('multistepform:feedback', kwargs={'heading': 'Cleared', 'message': 'The session has been successfully cleared, '}))
 
 # the feedback form to start over
 class FeedBackView(TemplateView):
