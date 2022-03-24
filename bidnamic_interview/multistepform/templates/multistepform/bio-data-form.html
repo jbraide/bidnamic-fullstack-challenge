@@ -10,6 +10,8 @@
 
     <!-- bootstrap css cdn from cdnjs -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% load widget_tweaks %}
 </head>
 <body>
     <div class="container">
@@ -19,14 +21,25 @@
                 <div class="card">
                     <div class="card-body">
                         <h3 class="text-center py-2">
-                            STEP 1/2
+                            STEP {{ step }}/2
                         </h3>
                         <h4 class="py-2">
                             Bio Data Form
                         </h4>
                         <form action="" method="post">
                             {% csrf_token %}
-                        {{ form }}
+                            <div class="row">
+                            {% for field in form %}
+
+                                <div class="col-lg-6">
+                                 <label for="">
+                                    {{ field.label_tag }}
+                                </label>
+                                {{ field|add_class:'form-control my-2' }}   
+                                </div>
+                            {% endfor %}
+                                
+                            </div>
                             
                            
                             <div class="row">

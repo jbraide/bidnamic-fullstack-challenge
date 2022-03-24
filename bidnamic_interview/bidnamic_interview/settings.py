@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # third party packages
     'phonenumber_field',
+    'widget_tweaks',
 
 ]
 

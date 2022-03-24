@@ -12,6 +12,9 @@ from django.urls import reverse, reverse_lazy
 # import model to dict 
 from django.forms.models import model_to_dict
 
+# import model 
+from .models import BioDataAndBiddingInformation
+
 '''
     Define session key prefix and add Bio Data and BiddingInfo. form data to 
     FORM_STEPS dictionary 
@@ -88,6 +91,7 @@ class MultiStepFormView(TemplateView):
         # override context data and pass form to the template
         context = self.get_context_data()
         context['form'] = form
+        context['step'] = step
 
         return self.render_to_response(context=context)
 
@@ -108,6 +112,13 @@ class MultiStepFormView(TemplateView):
 
                 # combine the data from the saved session data to the bidding data collected from the form
                 cleaned_bidding_data.update(saved_data_in_session)
+
+                # create the biodataandbidding record
+                BioDataAndBiddingInformation(**cleaned_bidding_data).save()
+
+                request.session.flush()
+
+                return redirect(reverse('multistepform:feedback', kwargs={'heading': 'Submitted', 'message': 'The session has been successfully cleared'}))
 
             else:
                 print(form.errors)
@@ -145,7 +156,7 @@ class MultiStepFormView(TemplateView):
 
 # when the clear button is hit flush the session
 class ClearFormView(RedirectView):
-    url = reverse_lazy('multistepform:feedback')
+    url = reverse_lazy('multistepform:feedback', kwargs={'heading': 'Cleared', 'message': 'The session has been successfully cleared, '})
 
     def get_redirect_url(self, *args, **kwargs):
         # clear the session

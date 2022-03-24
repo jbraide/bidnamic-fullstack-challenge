@@ -19,10 +19,10 @@
                 <div class="card">
                     <div class="card-body text-center ">
                         <h3 class="py-2">
-                            Cancelled
+                            {{ heading }}
                         </h3>
                         <p>
-                            All your data has been removed.
+                            {{ message }}
                         </p>
                         <a href="{% url 'multistepform:none-step' %}" class="btn btn-success">
                             Start Again
