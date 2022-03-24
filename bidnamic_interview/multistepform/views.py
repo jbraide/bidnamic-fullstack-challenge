@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # import forms
 from .forms import BioDataForm, BiddingInformationForm
@@ -66,6 +66,6 @@ def get_next_step(request):
 class MultiStepFormView(TemplateView):
     template_name = 'multistepform/bio-data-form.html'
 
-    # def get(self, request, step):
-    #     if step == None:
-    #         return redirect()
+    def get(self, request, step):
+        if step == None:
+            return redirect()

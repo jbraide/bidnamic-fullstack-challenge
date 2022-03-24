@@ -4,16 +4,15 @@ from django import forms
 # import model
 from .models import BioDataAndBiddingInformation
 
-class BioDataAndBiddingInformationForm(forms.ModelForm):
+
+class BioDataForm(forms.ModelForm):
     class Meta:
         model = BioDataAndBiddingInformation
-
-class BioDataForm(BioDataAndBiddingInformationForm):
-    class Meta:
         exclude = ['bidding_setting', 'google_ads_id']
 
-class BiddingInformationForm(BioDataAndBiddingInformationForm):
+class BiddingInformationForm(forms.ModelForm):
     class Meta:
+        model = BioDataAndBiddingInformation
         fields = ['bidding_setting', 'google_ads_id']
 
 
