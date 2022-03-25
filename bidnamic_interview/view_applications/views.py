@@ -44,10 +44,17 @@ class ViewAllApplications(TemplateView):
 
 
 class RemoveApplicationRecord(RedirectView):
-    url = reverse_lazy('view-applications:all-applications')
+    # redirect back to all applications table
+    url = reverse_lazy('view-applications:all-applications') 
 
+    # overide the get_redirect_url method
     def get_redirect_url(self, *args, **kwargs):
+        # get the id passed from the template 
         record_id = kwargs['id']
+        
+        # remove the record 
         BioDataAndBiddingInformation.objects.get(id=record_id).delete()
+
+        # success message
         success(self.request, 'Successfully Removed')
         return super().get_redirect_url(*args, **kwargs)
