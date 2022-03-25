@@ -45,23 +45,35 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if all_applications %}
+                            {% for applicant in all_applications %}
+                            <tr>
+                                <td></td>
+                                <td>{{ applicant.first_name }}</td>
+                                <td>{{ applicant.surname }}</td>
+                                <td>{{ applicant.date_of_birth }}</td>
+                                <td>{{ applicant.company_name }}</td>
+                                <td>{{ applicant.bidding_setting }}</td>
+                                <td>{{ applicant.google_ads_id }}</td>
+                                <td>
+                                    <a href="{% url 'view-applications:remove-application-record' id=applicant.id %}" class="btn btn-danger">
+                                        Remove
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
 
-                        {% for applicant in all_applications %}
-                        <tr>
-                            <td>{{ applicant.title }}</td>
-                            <td>{{ applicant.first_name }}</td>
-                            <td>{{ applicant.surname }}</td>
-                            <td>{{ applicant.date_of_birth }}</td>
-                            <td>{{ applicant.company_name }}</td>
-                            <td>{{ applicant.bidding_setting }}</td>
-                            <td>{{ applicant.google_ads_id }}</td>
-                            <td>
-                                <a href="" class="btn btn-danger">
-                                    Remove
-                                </a>
-                            </td>
-                        </tr>
-                        {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>There are No Applications</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        {% endif %}
                     </tbody>
                 </table>
             </div>
