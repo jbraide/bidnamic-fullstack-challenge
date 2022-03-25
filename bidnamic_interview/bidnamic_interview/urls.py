@@ -17,7 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # admin route
     path('admin/', admin.site.urls),
+
+    # multistep route
     path('', include('multistepform.urls', namespace='multistepform')),
+
+    # view applications route
     path('view-applications/', include('view_applications.urls', namespace='view-applications')),
+
+    # login route
+    path('login/', include('login.urls', namespace='login'))
 ]
