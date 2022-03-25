@@ -29,6 +29,7 @@
                         <span>The format for your phone number should be with international code i.e +23490.... or +44...</span>
 
                         <form class="mt-3" action="" method="post">
+                            <!-- error messages -->
                             {% if form.errors %}
                             {% for field in form %}
                                 {% for error in field.errors %}
@@ -43,6 +44,8 @@
                                     </div>
                                 {% endfor %}
                             {% endif %}
+
+                            <!-- actual field for biodata and bidding information -->
                             {% csrf_token %}
                             <div class="row">
                             {% for field in form %}
