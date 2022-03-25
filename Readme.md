@@ -4,6 +4,28 @@
 
 This is my attempt at solving the Multipart/Multistep Wizard to get a users BioData, bidding setting and Google Ads Account Id
 
+**How it works**
+
+The application uses a 2 step MultiPart form for handling
+
+> Step 1: Bio Data - (i.e title, first_name, surname ... address)
+>
+> Step 2: Bidding Information - (i.e bidding_settings, google_ads_id)
+
+Bio Data information is stored in the session in the first step and then saved as one record to a single record to accomodate the bidding_setting and google_ads_id.
+
+The solution also accomodates the requirements of being able to handle 
+
+> Not being able to fill the form if date of birth is under 18
+>
+> option selected or inputted does not exist in the bidding settings (i.e High, Medium, Low)
+>
+
+There is also authentication befor being able to view all of the created applications
+
+> *Note:* There is only a login route and No signup, so to have access create a superuser 
+
+
 ## Getting Setup
 
 **Project Requirements**
@@ -59,6 +81,12 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+**Running the Application**
+
+```sh
+python manage.py runserver 127.0.0.1:4567
+```
+
 **Running Tests**
 
 To run the test 
@@ -66,4 +94,3 @@ To run the test
 python manage.py test multistepform.tests
 ```
 
-## Functionality Description 
