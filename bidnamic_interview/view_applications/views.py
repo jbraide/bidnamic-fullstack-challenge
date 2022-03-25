@@ -13,12 +13,20 @@ from django.urls import reverse_lazy
 from django.contrib.messages import success
 
 
+'''
+    This view handles how to  
+    - display all the applications that came from the multistepform
+    - removal of a single applicants record from the database
+
+'''
+
 class ViewAllApplications(TemplateView):
     template_name = 'view_applications/view-applications.html'
     model = BioDataAndBiddingInformation
 
     # override get_context data
     def get_context_data(self, **kwargs):
+        # query the model and return the values in a dictionary
         bio_data_bidding_information_query = self.model.objects.values(
             'id', 
             'title', 
@@ -29,6 +37,8 @@ class ViewAllApplications(TemplateView):
             'company_name', 
             'bidding_setting', 
             'google_ads_id')
+
+        # get ready to pass the query to the template 
         kwargs['all_applications'] = bio_data_bidding_information_query
         return super().get_context_data(**kwargs)
 
