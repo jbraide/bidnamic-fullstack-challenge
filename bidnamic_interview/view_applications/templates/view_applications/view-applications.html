@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Bidnamic Coding Challenge
+    </title>
+
+    <!-- bootstrap css cdn from cdnjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <div class="col-lg-10 my-4">
+                <h3 class="my-5">
+                    Applications
+                </h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Title
+                            </th>
+                            <th scope="col">
+                                First Name
+                            </th>
+                            <th scope="col">
+                                Surname
+                            </th>
+                            <th scope="col">
+                                Date of Birth
+                            </th>
+                            <th scope="col">
+                                Company Name
+                            </th>
+                            <th scope="col">
+                                Bidding Settings
+                            </th>
+                            <th scope="col">
+                                Google Ads Account ID
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {% for applicant in all_applications %}
+                        <tr>
+                            <td>{{ applicant.title }}</td>
+                            <td>{{ applicant.first_name }}</td>
+                            <td>{{ applicant.surname }}</td>
+                            <td>{{ applicant.date_of_birth }}</td>
+                            <td>{{ applicant.company_name }}</td>
+                            <td>{{ applicant.bidding_setting }}</td>
+                            <td>{{ applicant.google_ads_id }}</td>
+                            <td>
+                                <a href="" class="btn btn-danger">
+                                    Remove
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+</body>
+</html>
