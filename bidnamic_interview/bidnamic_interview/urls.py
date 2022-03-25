@@ -19,4 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('multistepform.urls', namespace='multistepform')),
+    path('view-applications/', include('view_applications.urls', namespace='view-applications')),
 ]
