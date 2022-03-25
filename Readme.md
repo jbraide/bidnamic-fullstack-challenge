@@ -21,7 +21,7 @@ git clone https://github.com/jbraide/bidnamic-fullstack-challenge.git
 
 > *Note:* This needs to be done only once
 
-** Create and activate virtual environment **
+**Create and activate virtual environment**
 
 After creating a virtual environment (optional), activate it by running
 
@@ -41,6 +41,23 @@ For other operating system like Linux and MacOS, use
 source venv/bin/activate
 ```
 
+**Installing project dependencies**
+
+To install the project dependencies, use
+
+```sh
+pip install -r requirements.txt
+```
+
+**Migrating changes**
+
+Make sure you run the following code after creating either a new django app, model or migration. This will ensure that the database is in sync and prevent unnecessary issues.
+
+```sh
+cd bidnamic_interview
+python manage.py makemigrations
+python manage.py migrate
+```
 
 
 ## Functionality Description 
