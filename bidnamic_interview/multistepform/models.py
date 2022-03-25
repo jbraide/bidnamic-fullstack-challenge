@@ -12,7 +12,7 @@ class BioDataAndBiddingInformation(models.Model):
     )
     title = models.CharField(max_length=50)
     first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
     date_of_birth = models.DateField()
     company_name = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
