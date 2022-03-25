@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'multistepform',
     'view_applications',
 
+    # authentication
+    'login',
+
     # third party packages
     'phonenumber_field',
     'widget_tweaks',
