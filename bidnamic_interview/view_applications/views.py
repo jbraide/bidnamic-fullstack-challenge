@@ -12,6 +12,9 @@ from django.urls import reverse_lazy
 # import success Message
 from django.contrib.messages import success
 
+# import loginrequiredmixin
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 '''
     This view handles how to  
@@ -20,9 +23,10 @@ from django.contrib.messages import success
 
 '''
 
-class ViewAllApplications(TemplateView):
+class ViewAllApplications(LoginRequiredMixin, TemplateView):
     template_name = 'view_applications/view-applications.html'
     model = BioDataAndBiddingInformation
+    login_url = 'login:login'
 
     # override get_context data
     def get_context_data(self, **kwargs):
