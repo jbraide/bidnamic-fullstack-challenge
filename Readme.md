@@ -59,5 +59,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+**Running Tests**
+
+To run the test 
+```sh
+python manage.py test multistepform.tests
+```
 
 ## Functionality Description 
