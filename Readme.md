@@ -6,12 +6,12 @@ This is my attempt at solving the Multipart/Multistep Wizard to get a users BioD
 
 ## Getting Setup
 
-** Project Requirements **
+**Project Requirements**
 
 * [Python >= 3.0](https://docs.python.org/3)
 * [Django == 3.2.12](https://docs.djangoproject.com/en/3.2/)
 
-** Setup **
+**Setup**
 
 * create a folder e.g bidnamic
 * On folder creation clone the repository via terminal
@@ -26,19 +26,19 @@ git clone https://github.com/jbraide/bidnamic-fullstack-challenge.git
 After creating a virtual environment (optional), activate it by running
 
 ```sh
-python -m venv env
+python -m venv venv
 ```
 
 For windows, activate it this way
 
 ```sh
-env/Scripts/activate
+venv/Scripts/activate
 ```
 
 For other operating system like Linux and MacOS, use
 
 ```sh
-source env/bin/activate
+source venv/bin/activate
 ```
 
 
