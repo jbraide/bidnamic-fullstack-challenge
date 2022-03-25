@@ -50,7 +50,7 @@
                         {% if all_applications %}
                             {% for applicant in all_applications %}
                             <tr>
-                                <td></td>
+                                <td>{{ applicant.title }}</td>
                                 <td>{{ applicant.first_name }}</td>
                                 <td>{{ applicant.surname }}</td>
                                 <td>{{ applicant.date_of_birth }}</td>
