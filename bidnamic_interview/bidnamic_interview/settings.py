@@ -147,3 +147,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+# change the default login redirect
+LOGIN_REDIRECT_URL = 'view-applications:all-applications'
