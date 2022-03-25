@@ -9,6 +9,9 @@ from django.views.generic import TemplateView, RedirectView
 # import reverse_lazy 
 from django.urls import reverse_lazy
 
+# import success Message
+from django.contrib.messages import success
+
 
 class ViewAllApplications(TemplateView):
     template_name = 'view_applications/view-applications.html'
@@ -32,7 +35,9 @@ class ViewAllApplications(TemplateView):
 
 class RemoveApplicationRecord(RedirectView):
     url = reverse_lazy('view-applications:all-applications')
+
     def get_redirect_url(self, *args, **kwargs):
         record_id = kwargs['id']
         BioDataAndBiddingInformation.objects.get(id=record_id).delete()
+        success(self.request, 'Successfully Removed')
         return super().get_redirect_url(*args, **kwargs)
