@@ -4,7 +4,10 @@ from django.shortcuts import render
 from multistepform.models import BioDataAndBiddingInformation
 
 # import TemplateView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
+
+# import reverse_lazy 
+from django.urls import reverse_lazy
 
 
 class ViewAllApplications(TemplateView):
@@ -13,6 +16,23 @@ class ViewAllApplications(TemplateView):
 
     # override get_context data
     def get_context_data(self, **kwargs):
-        bio_data_bidding_information_query = self.model.objects.values('title', 'first_name', 'surname', 'date_of_birth', 'date_of_birth', 'company_name', 'bidding_setting', 'google_ads_id')
+        bio_data_bidding_information_query = self.model.objects.values(
+            'id', 
+            'title', 
+            'first_name', 
+            'surname', 
+            'date_of_birth', 
+            'date_of_birth', 
+            'company_name', 
+            'bidding_setting', 
+            'google_ads_id')
         kwargs['all_applications'] = bio_data_bidding_information_query
         return super().get_context_data(**kwargs)
+
+
+class RemoveApplicationRecord(RedirectView):
+    url = reverse_lazy('view-applications:all-applications')
+    def get_redirect_url(self, *args, **kwargs):
+        record_id = kwargs['id']
+        BioDataAndBiddingInformation.objects.get(id=record_id).delete()
+        return super().get_redirect_url(*args, **kwargs)
