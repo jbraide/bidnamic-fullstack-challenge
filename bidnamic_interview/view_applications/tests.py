@@ -23,6 +23,10 @@ class ViewAllRecords(TestCase):
 
         model = BioDataAndBiddingInformation
 
+        self.client = Client()
+
+        self.model = model
+
         # create some records
         model.objects.create(
             title='Hon',
@@ -60,9 +64,6 @@ class ViewAllRecords(TestCase):
             google_ads_id='123-456-7890'
         )
 
-        self.client = Client()
-
-        self.model = model
 
     def test_to_view_all_applications(self):
         # create a variable of the client
