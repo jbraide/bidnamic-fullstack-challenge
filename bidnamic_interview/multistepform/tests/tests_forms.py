@@ -37,7 +37,6 @@ class TestBioDataForm(TestCase):
     # validate date entered is under 18 yrs of age.
     def test_dob_under_18_requirement(self):
         # get today and birthday
-        today = date.today()
         date_of_birth = date(2020, 10, 10)
 
         # biodata form
