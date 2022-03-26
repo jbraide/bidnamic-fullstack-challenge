@@ -89,8 +89,14 @@ python manage.py runserver 127.0.0.1:4567
 
 **Running Tests**
 
-To run the test 
+To run the test suite 
+
+* for multistepform
 ```sh
 python manage.py test multistepform.tests
 ```
 
+* for view_applications
+```sh
+python manage.py test view_applications.tests
+```
