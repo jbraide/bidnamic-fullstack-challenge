@@ -82,7 +82,7 @@ class ViewAllRecords(TestCase):
         response = browser.get('/view-applications/')
 
         # get all the applications created
-        applications = self.model.objects.values(
+        applications_query = self.model.objects.values(
             'id', 
             'title', 
             'first_name', 
@@ -92,10 +92,14 @@ class ViewAllRecords(TestCase):
             'company_name', 
             'bidding_setting', 
             'google_ads_id')
-        print(applications)
+        
+        context = response.context['all_applications']
+
         # assert the right amount of records are displaying
-        self.assertEqual(len(response.context['all_applications']), 3)
-        # self.assertEqual(response.context['all_applications'], applications)
+        self.assertEqual(len(context), 3)
+
+        # assert the context data is equal to the query
+        # self.assertEqual(context, applications_query)
 
 
         
