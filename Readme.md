@@ -47,10 +47,6 @@ git clone https://github.com/jbraide/bidnamic-fullstack-challenge.git
 
 After creating a virtual environment (optional), activate it by running
 
-```sh
-python -m venv venv
-```
-
 For windows, activate it this way
 
 ```sh
