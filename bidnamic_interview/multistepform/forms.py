@@ -21,7 +21,7 @@ class BioDataForm(forms.ModelForm):
         today = date.today()
         date_of_birth = self.cleaned_data['date_of_birth']
         age = (today - date_of_birth).days / 365
-        if age <= 18:
+        if age < 18:
             raise forms.ValidationError('You Must be Up to 18 years')
         return date_of_birth
 
