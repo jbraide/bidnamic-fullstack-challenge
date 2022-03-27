@@ -70,7 +70,7 @@ def get_next_step(request):
 class MultiStepFormView(TemplateView):
     template_name = 'multistepform/bio-data-form.html'
 
-    def get(self, request, step):
+    def get(self, request, step, **kwargs):
         ''' 
         when the homepage is being hit, redirect to next step to begin 
         the multi step form
@@ -83,7 +83,7 @@ class MultiStepFormView(TemplateView):
         form = FORM_STEPS[step]['form']()
 
         # override context data and pass form to the template
-        context = self.get_context_data()
+        context = self.get_context_data(**kwargs)
         context['form'] = form
         context['step'] = step
 
