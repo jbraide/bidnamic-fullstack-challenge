@@ -28,8 +28,9 @@ class TestBiddingInformationForm(TestCase):
             'bidding_setting':'High',
             'google_ads_id':'123-902-83727'
         }
-        bidding_form = BiddingInformationForm(valid_bidding_data).is_valid()
-        return self.assertTrue(bidding_form)
+        bidding_form = BiddingInformationForm(valid_bidding_data)
+        valid_bidding_form = bidding_form.is_valid()
+        return self.assertTrue(valid_bidding_form, bidding_form.errors)
 
 
 class TestBioDataForm(TestCase):
