@@ -1,19 +1,11 @@
+#  import date
+from datetime import date
+
+# import unittest TestCase Class
 from django.test import TestCase
-
-# get the BiddingInformationForm and BioDataForm from multistep
-from multistepform.forms import BiddingInformationForm, BioDataForm
-
-# import set_form_data in session
-from multistepform.views import set_form_data
 
 # import Client
 from django.test import Client
-
-#  import date 
-from datetime import date
-
-# import request 
-from django.http.request import HttpRequest
 
 # import requestfactory
 from django.test import RequestFactory
@@ -29,12 +21,8 @@ class TestSessionAndView(TestCase):
         self.client = Client()
         self.request_factory = RequestFactory()
    
-    # test the data is in the session in step 1
     def test_session_availablility_for_step_1(self):
-
-        # use the client attribute
-        # browser = self.client
-        
+        '''test the data is in the session in step 1'''
         # use request Factory
         browser = self.request_factory
 
@@ -62,7 +50,7 @@ class TestSessionAndView(TestCase):
         step_1 = SESSION_KEY_PREFIX + str(1)
         request.session[step_1] = form_data
 
-        # get the browser session and get the dict_items 
+        # get the browser session and get the dict_items
         # (this was the way to get the session data)
         session = request.session
         session_dict_items = session.items()
